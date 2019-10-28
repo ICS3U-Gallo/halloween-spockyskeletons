@@ -1,28 +1,28 @@
 import arcade
 
+background = arcade.Sprite('background.jpg', center_x = 320, center_y = 240, scale = 1.1)
 WIDTH = 640
 HEIGHT = 480
 
 window = arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
+x = 50
+x_speed = 1
 
 
 def setup():
-    arcade.set_background_color(arcade.color.SKY_BLUE)
-    arcade.schedule(update, 1 / 60)
+    arcade.schedule(update, 1/60)
     arcade.run()
 
 
 def update(delta_time):
     pass
 
-
 @window.event
 def on_draw():
     arcade.start_render()
     # Draw in here...
-
-    arcade.draw_rectangle_filled(320, 50, 640, 100, arcade.color.GREEN)
-    arcade.draw_circle_filled(WIDTH - 100, HEIGHT - 100, 50, arcade.color.YELLOW)
+    arcade.draw_circle_filled(x, 100, 25, arcade.color.BLUE)
+    background.draw()
 
 
 @window.event
