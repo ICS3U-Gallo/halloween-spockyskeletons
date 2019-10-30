@@ -5,8 +5,10 @@ WIDTH = 640
 HEIGHT = 480
 
 x = 50
-x_speed = 5
-spider = arcade.Sprite('spider.png', center_x=x, center_y=240, scale=0.15)
+x_speed = 25
+y = 240
+y_speed = 25
+spider = arcade.Sprite('spider.png', center_x=x, center_y=y, scale=0.15)
 window = arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
 
 
@@ -16,15 +18,21 @@ def setup():
 
 
 def update(delta_time):
-    global x, x_speed, spider
+    global x, x_speed, spider, y, y_speed
     spider.update()
 
     if spider.center_x <= 15:
-        x_speed = 5
+        x_speed = 25
 
     elif spider.center_x >= (WIDTH-15):
-        x_speed = -5
+        x_speed = -25
     spider.center_x += x_speed
+
+    if spider.center_y <= 15:
+        y_speed = 25
+    elif spider.center_y >= (HEIGHT - 15):
+        y_speed = -25
+    spider.center_y += y_speed
 
 
 
