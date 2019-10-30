@@ -1,4 +1,5 @@
 import arcade
+import random
 
 background = arcade.Sprite('background.jpg', center_x=320, center_y=240, scale=1.1)
 WIDTH = 640
@@ -22,16 +23,16 @@ def update(delta_time):
     spider.update()
 
     if spider.center_x <= 15:
-        x_speed = 25
+        x_speed = random.randint(15, 50)
 
     elif spider.center_x >= (WIDTH-15):
-        x_speed = -25
+        x_speed = random.randint(-50, -10)
     spider.center_x += x_speed
 
     if spider.center_y <= 15:
-        y_speed = 25
+        y_speed = random.randint(15, 50)
     elif spider.center_y >= (HEIGHT - 15):
-        y_speed = -25
+        y_speed = random.randint(-50, -10)
     spider.center_y += y_speed
 
 
@@ -43,16 +44,6 @@ def on_draw():
     background.draw()
     spider.draw()
     arcade.draw_text(f"Score {score}", WIDTH - 80, HEIGHT - 40, arcade.color.WHITE, 14)
-
-
-@window.event
-def on_key_press(key, modifiers):
-    pass
-
-
-@window.event
-def on_key_release(key, modifiers):
-    pass
 
 
 @window.event
