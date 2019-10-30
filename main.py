@@ -13,6 +13,7 @@ spider = arcade.Sprite('spider.png', center_x=x, center_y=y, scale=0.15)
 window = arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
 score = 0
 
+
 def setup():
     arcade.schedule(update, 1 / 60)
     arcade.run()
@@ -23,16 +24,16 @@ def update(delta_time):
     spider.update()
 
     if spider.center_x <= 15:
-        x_speed = random.randint(15, 50)
+        x_speed = random.randint(15, 25)
 
     elif spider.center_x >= (WIDTH-15):
-        x_speed = random.randint(-50, -10)
+        x_speed = random.randint(-25, -10)
     spider.center_x += x_speed
 
     if spider.center_y <= 15:
-        y_speed = random.randint(15, 50)
+        y_speed = random.randint(15, 25)
     elif spider.center_y >= (HEIGHT - 15):
-        y_speed = random.randint(-50, -10)
+        y_speed = random.randint(-25, -10)
     spider.center_y += y_speed
 
 
@@ -47,8 +48,20 @@ def on_draw():
 
 
 @window.event
-def on_mouse_press(x, y, button, modifiers):
+def on_key_press(key, modifiers):
     pass
+
+
+@window.event
+def on_key_release(key, modifiers):
+    pass
+
+
+@window.event
+def on_mouse_press(x, y, button, modifiers):
+    if button == arcade.MOUSE_BUTTON_LEFT:
+        if x == spider.center_x and y == spider.center_y:
+            score += 1
 
 
 if __name__ == '__main__':
