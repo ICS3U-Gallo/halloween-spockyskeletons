@@ -1,4 +1,3 @@
-
 import arcade
  
 background = arcade.Sprite('background.jpg', center_x = 320, center_y = 240, scale = 1.1)
@@ -18,10 +17,14 @@ def setup():
  
  
 def update (delta_time):
-   global x, x_speed
+   global x, x_speed, spider
    spider.update()
   
- 
+    if spider.center_x <= 0:
+       x_speed = 5
+   elif spider.center_x >= WIDTH:
+        x_speed = -5
+        spider.center_x += x_speed
   
  
 @window.event
@@ -30,8 +33,8 @@ def on_draw():
    # Draw in here...
    background.draw()
    spider.draw()
-   if spider.center_x <= WIDTH - 50:
-       spider.center_x += x_speed
+   
+
   
  
 @window.event
