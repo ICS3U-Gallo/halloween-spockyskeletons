@@ -10,7 +10,7 @@ y = 240
 y_speed = 25
 spider = arcade.Sprite('spider.png', center_x=x, center_y=y, scale=0.15)
 window = arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
-
+score = 0
 
 def setup():
     arcade.schedule(update, 1 / 60)
@@ -42,6 +42,7 @@ def on_draw():
     # Draw in here...
     background.draw()
     spider.draw()
+    arcade.draw_text(f"Score {score}", WIDTH - 80, HEIGHT - 40, arcade.color.WHITE, 14)
 
 
 @window.event
