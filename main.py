@@ -9,7 +9,7 @@ x = 50
 x_speed = 25
 y = 240
 y_speed = 25
-spider = arcade.Sprite('spider.png', center_x=x, center_y=y, scale=0.15)
+spider = arcade.Sprite('spider.png', center_x=x, center_y=y, scale=0.2)
 window = arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
 score = 0
 
@@ -59,10 +59,11 @@ def on_key_release(key, modifiers):
 
 @window.event
 def on_mouse_press(x, y, button, modifiers):
+    global score
     if button == arcade.MOUSE_BUTTON_LEFT:
-        if x == spider.center_x and y == spider.center_y:
-            score += 1
-
+        if spider.center_x - 50 <= x <= spider.center_x + 50:
+            if spider.center_y + 50 >= y >= spider.center_y - 50:
+                score += 1
 
 if __name__ == '__main__':
     setup()
